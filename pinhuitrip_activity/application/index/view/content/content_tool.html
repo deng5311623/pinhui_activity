@@ -1,0 +1,92 @@
+{include file="common/header"}
+    <title>周边商品</title>
+    <link rel="stylesheet" href="http://lib.diygw.com/static/lib/weui/css/weui.css"/>
+    <style>
+        body{
+            background: #faf8f8;
+        }
+        .weui-media-box {
+            padding: 2px;
+        }
+        .weui-media-box__hd{
+            width: 130px!important;
+            height: 120px!important;
+        }
+        #select_div{
+            text-align: center;
+        }
+        #select_div li {
+            width: 50%;
+            float: left;
+            background: #fff;
+            padding: 7px 0px;
+            border-bottom: 1px solid #efeaea;
+        }
+        .padding-bot-50{
+            padding-bottom:60px ;
+        }
+    </style>
+</head>
+<body>
+
+<!--主要问题框-->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="__STATIC__/index/images/content/shoutao.jpg" width="100%" alt=""></div>
+        <div class="swiper-slide"><img src="__STATIC__/index/images/content/chuizi.jpg" width="100%" alt=""></div>
+        <div class="swiper-slide"><img src="__STATIC__/index/images/content/fangdajing.jpg" width="100%" alt=""></div>
+    </div>
+    <div class="swiper-scrollbar"></div>
+</div>
+
+
+<div id="select_div">
+    <li>综合排序</li>
+    <li>销量优先</li>
+</div>
+
+
+
+<div class="white-card padding-bot-50">
+    <a id="datatemplate583986" page="" href="#" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd"> <img class="weui-media-box__thumb" src="__STATIC__/index/images/content/chuizi.jpg" alt="标题一"> </div>
+        <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title">地质科考锤</h4>
+            <p class="weui-media-box__desc">铁锤子平头地质勘探锤专业地质锤地</p>
+            <p>￥23</p>
+        </div>
+    </a>
+    <a page="" href="#" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd"> <img class="weui-media-box__thumb" src="__STATIC__/index/images/content/shoutao.jpg" alt="标题二"> </div>
+        <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title">科考手套</h4>
+            <p class="weui-media-box__desc">铁锤子平头地质</p>
+            <p>￥18</p>
+        </div>
+    </a>
+    <a page="" href="#" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd"> <img class="weui-media-box__thumb" src="__STATIC__/index/images/content/fangdajing.jpg" alt="标题三"> </div>
+        <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title">科考放大镜</h4>
+            <p class="weui-media-box__desc">铁锤子平头地质勘探锤专业</p>
+            <p>￥33</p>
+        </div>
+    </a>
+</div>
+
+
+
+
+<!--底部通栏-->
+
+{include file="common/footer" /} 
+
+
+</body>
+</html>
+<script type="text/javascript">
+    var mySwiper = new Swiper('.swiper-container',{
+        scrollbar:'.swiper-scrollbar',
+        autoplay: 5000,
+    });
+</script>

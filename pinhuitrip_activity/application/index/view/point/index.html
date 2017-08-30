@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="title" content="游品慧">
+    <meta name="description" content="游品慧">
+    <meta name="keywords" content="游品慧">
+    <title>游品慧</title>
+    <!--css文件-->
+    <link rel="stylesheet" href="__STATIC__/index/css/common/base.css">
+    <link rel="stylesheet" href="__STATIC__/index/css/point.css">
+
+       <!-- head 中 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+
+    <style>
+        /* 抬头的背景图片 */
+        .title_bg{
+            background:url('__STATIC__/index/{$site_details_data.site_bg_img}');
+            background-size:100% 100%;
+        }
+    
+    </style>
+</head>
+<body>
+    <!--标题背景图-->
+    <div  class="title_bg">
+        
+    </div>
+ 
+
+    <!--介绍卡片-->
+    <div id="card_div">
+        <div class="card" >
+                <div id="music_img"></div>
+            <p class="title">{$site_details_data.details_name}</p>
+            <div class="left">
+                <p class="timeline"><span style=""></span></p>
+                <div class="info">
+                  <span class="size time_left">00:00</span>
+                  <span class="timeshow time_right">00:00</span>
+                  <div id="music_pause"> <div></div> <span>暂停</span></div>
+                </div>
+            </div>
+
+            <p class="main">{$site_details_data.details_article}</p>
+        </div>
+    </div>
+    
+     <!--图标信息框-->
+     <div id="img_div"></div>
+
+
+    <!--音频播放-->
+    <div id="music_div">
+        <audio  id="myMusic">
+            <!-- <source class="music" src="http://so1.111ttt.com:8282/2016/1/12m/10/205102152511.m4a?tflag=1503565975&pin=2cdf6d5235ca87d8c9f84ba08f622f52&ip=171.113.105.49#.mp3" type="audio/mpeg"> -->
+            <source class="music" src="{$site_details_data.music_path}" type="audio/mpeg">
+            
+            <source src="horse.ogg" type="audio/ogg">
+        </audio>
+    </div>
+
+
+        <!--视频播放-->
+
+    {if condition="$site_details_data.video_path"} 
+             <div id="video_div">
+             <p class="title menu">【视频】{$site_details_data.video_title}</p>
+                <video controls id="myVideo" >
+                    <source class="video" src="__STATIC__/{$site_details_data.video_path}" type="video/mp4">
+                </video>
+            </div>
+        {else /} 
+         <!--    <p>视频不存在</p> -->
+    {/if}
+   
+
+    <!-- 文章推荐 -->
+    <div id="article" class="white-card padding-bot-50">
+       
+       
+    </div>
+
+
+
+
+
+
+    
+
+
+
+   
+</body>
+</html>
+<script charset="utf-8" type="text/javascript" src="http://lib.diygw.com/static/lib/jquery.js"></script>
+
+<!-- 如果使用了某些拓展插件还需要额外的JS -->
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/swiper.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+
+<script>
+
+
+    var myMusic = document.getElementById('myMusic');
+      // 播放
+        $('#music_img').on('click',function(){
+            myMusic.play();
+            $('#music_pause').fadeIn();
+        });
+        // 暂停
+        $('#music_pause').on('click',function(){
+            myMusic.pause();
+            $('#music_pause').fadeOut();
+        });
+ $(function(){
+   AudioControl('myMusic')
+   function AudioControl(id){
+     // 音频控制进度条
+     var audio = document.getElementById(id);
+     // 当浏览器已加载音频/视频的元数据时
+     $(audio).on('loadedmetadata',function(){
+        audio.pause();
+        // 进度条控制
+         $(document).on('touchend','.timeline',function(e){
+           var x = e.originalEvent.changedTouches[0].clientX-this.offsetLeft;
+           var X = x < 0 ? 0 : x ;
+           var W = $(this).width();
+           var place = X > W ? W : X;
+           audio.currentTime = (place/W).toFixed(2)*audio.duration
+           $(this).children().css({width:(place/W).toFixed(2)*100+"%"})
+         });
+       
+     })
+     setInterval(function () {
+       var currentTime = audio.currentTime;
+       setTimeShow(currentTime);
+     }, 1000);
+     // 设置播放时间
+   function setTimeShow(t) {
+     t = Math.floor(t);
+     var playTime = secondToMin(audio.currentTime);//当前时间
+     $(".size").html(playTime);
+     $('.timeshow').text(secondToMin(audio.duration));//时间总长度
+     $('.timeline').children().css({width:(t/audio.duration).toFixed(4)*100+"%"})
+   }
+     // 计算时间
+   function secondToMin(s) {
+     var MM = Math.floor(s / 60);
+     var SS = s % 60;
+     if (MM < 10)
+       MM = "0" + MM;
+     if (SS < 10)
+       SS = "0" + SS;
+     var min = MM + ":" + SS;
+     return min.split('.')[0];
+   }
+   }
+  })
+
+
+
+
+    $(function(){
+
+    // 加载图片
+    // 
+    function get_img_info(){
+            var img_path = '__STATIC__/index/' 
+            var request_url = "{:url('index/point/get_img_info')}";
+         $.ajax({  
+                url:request_url,
+                dataType : "json",
+                type:'post',
+                data:{id:'{$site_details_data.img_id}'},
+                 success : function(img_data) {
+                  
+                    // 给图片添加 绝对路径地址
+                    for (var i = 0; i < img_data.length; i++) {
+                        img_data[i].image = img_path + img_data[i].image;
+                    }
+                        var image_menu = $.photoBrowser({
+                        items: img_data,
+
+                        initIndex: 0,
+                    });
+
+
+                        $('#img_div').click(function(){
+                            image_menu.open();
+                        })
+                    }
+
+            });
+    }
+    get_img_info();  
+
+
+     // 加载文章
+     // 
+     function get_article_info(){
+        var acticle_url = "{:url('index/point/get_article_info')}";
+        var l = "";
+            $.ajax({  
+                url:acticle_url,
+                dataType : "json",
+                type:'post',
+                data:{id:'{$site_details_data.article_id}'},
+                 success : function(article_data) {
+                  
+                        console.log(article_data);
+                        var  a_request_url = "{:url('index/article/article_content')}";
+                         var a_request_url = a_request_url.split('.')[0] ;
+                        for (var i = 0; i < article_data.length; i++) {
+                           
+
+                            l += ' <a id="datatemplate583986" page="" href="'+a_request_url+ '/id/'+ article_data[i].id+'" class="weui-media-box weui-media-box_appmsg">'
+                            l += '    <div class="weui-media-box__hd"> <img class="weui-media-box__thumb" src="__STATIC__/index/'+article_data[i].title_img+'" alt="标题一"> </div>'
+                            l += '    <div class="weui-media-box__bd">'
+                            l += '        <h4 class="weui-media-box__title">'+article_data[i].title+'</h4>'
+                            l += '        <p class="weui-media-box__desc">'+article_data[i].subheading+'</p>'
+                            l += '    </div>'
+                            l += ' </a>'
+
+                        }
+
+                        $('#article').html(l);
+                    }
+
+            });
+     }
+     get_article_info();
+        
+        
+    })
+</script>

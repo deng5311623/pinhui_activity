@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="title" content="游品慧">
+    <meta name="description" content="游品慧">
+    <meta name="keywords" content="游品慧">
+    <title>游品慧</title>
+    <meta name="author" content="DIY官网 http://www.diygw.com" />
+    <link rel="stylesheet" href="http://lib.diygw.com/static/lib/weui/css/weui.css"/>
+    <link rel="stylesheet" href="http://lib.diygw.com/static/lib/weui/css/weui-extend.css"/>
+    <link rel="stylesheet" href="http://lib.diygw.com/static/lib/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://lib.diygw.com/static/lib/bootstrapValidator/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="http://lib.diygw.com/static/lib/animate/css/animate.css"/>
+    <link rel="stylesheet" href="http://lib.diygw.com/static/lib/fileuploader/jquery.fileuploader.css"/>
+    <script charset="utf-8" type="text/javascript" src="http://lib.diygw.com/static/lib/jquery.js"></script>
+    <script charset="utf-8" type="text/javascript" src="http://lib.diygw.com/static/lib/underscore.js"></script>
+    <script charset="utf-8" type="text/javascript">
+        _.templateSettings = {
+            interpolate : /[\$\{]\{(.+?)\}\}?/g,
+            evaluate : /<%([\s\S]+?)%>/g
+        };
+        window.STATIC_URL = "http://lib.diygw.com";
+        window.UEDITOR_SERVER_URL = "/ueditor/index.html";
+    </script>
+    <script charset="utf-8" type="text/javascript" src="http://lib.diygw.com/static/lib/animate/js/animate.js"></script>
+    <script charset="utf-8" type="text/javascript" src="http://lib.diygw.com/static/lib/jquery.form.js"></script>
+    <script charset="utf-8" type="text/javascript" src="http://lib.diygw.com/static/lib/fileuploader/jquery.fileuploader.js"></script>
+    <script charset="utf-8" type="text/javascript" src="http://lib.diygw.com/static/lib/weui/js/weui-extend.js"></script>
+    <script charset="utf-8" type="text/javascript" src="http://lib.diygw.com/static/lib/bootstrapValidator/js/bootstrapValidator.js"></script>
+
+
+    <style>
+        #page{
+            top:0px;
+        }
+        #mapDiv{
+            width:100%;
+            position: fixed!important;
+        }
+
+        .active_list{
+            background: #fff;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+        }
+        #active_title{
+            padding:5px;
+            background: #00af50;
+            color:#fff;
+        }
+    </style>
+</head>
+<body data-ride="animatebox" style="background-color:;">
+<div class="container">
+    <div class="page" id="page" style="margin-bottom:20px;">
+        <div class="">
+            <div id="searchBar927121" class="weui-search-bar">
+                <form class="weui-search-bar__form" id="serachForm927121" action="" enctype="application/x-www-form-urlencoded" method="get">
+                    <div class="weui-search-bar__box">
+                        <i class="weui-icon-search"></i>
+                        <input type="search" required="" placeholder="请输入关键字" name="seachvalue" id="searchInput927121" class="weui-search-bar__input" />
+                        <a id="searchClear927121" class="weui-icon-clear" href="javascript:"></a>
+                    </div>
+                    <label id="searchText927121" class="weui-search-bar__label" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);"> <i class="weui-icon-search"></i> <span>请输入关键字</span> </label>
+                </form>
+                <a id="searchBtn927121" class="weui-search-bar__cancel-btn" href="javascript:">搜索</a>
+            </div>
+            <script type="text/javascript">
+                $(function() {
+                    var $searchBar927121 = $('#searchBar927121'),
+                        $searchText927121 = $('#searchText927121'),
+                        $searchInput927121 = $('#searchInput927121'),
+                        $searchClear927121 = $('#searchClear927121'),
+                        $searchBtn927121 = $('#searchBtn927121');
+
+                    function cancelSearch927121() {
+                        $searchBar927121.removeClass('weui-search-bar_focusing');
+                        $searchText927121.show();
+                    }
+                    $searchText927121.on('click', function() {
+                        $searchBar927121.addClass('weui-search-bar_focusing');
+                        $searchInput927121.focus();
+                    });
+                    $searchClear927121.on('click', function() {
+                        $searchInput927121.focus();
+                    });
+                    $searchBtn927121.on('click', function(e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        if ($searchInput927121.val() == "") {
+                            $.toast('请输入关键字', 'forbidden')
+                        } else {
+                            $("#serachForm927121").submit();
+                        }
+                    });
+                });
+            </script>
+        </div>
+        <div id="carousel422984" class="carousel slide tool" data-ride="carousel" data-circular="true" data-autoplay="true" data-duration="1000" data-interval="3000" style="height:150px">
+            <!-- 轮播（Carousel）指标 -->
+            <ol class="carousel-indicators">
+                <li class="" data-target="#carousel422984" data-slide-to="0"></li>
+                <li data-target="#carousel422984" data-slide-to="1" class="active"></li>
+                <li data-target="#carousel422984" data-slide-to="2" class=""></li>
+            </ol>
+            <!-- 轮播（Carousel）项目 -->
+            <div class="carousel-inner">
+                <div class="item" id="datatemplate422984">
+                    <a href="#" page=""> <img src="http://img1.gtimg.com/hb/pics/19950/19950636.jpg" /> </a>
+                </div>
+                <div class="item active">
+                    <a href="#" page=""> <img src="http://img1.gtimg.com/hb/pics/19950/19950634.jpg" /> </a>
+                </div>
+                <div class="item">
+                    <a href="#" page=""> <img src="http://img1.gtimg.com/hb/pics/19950/19950642.jpg" /> </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd">中国地质大学，拥有4A景点的学校</div>
+            <div class="weui-panel__bd">
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="http://img5.imgtn.bdimg.com/it/u=4183648996,2585103947&fm=26&gp=0.jpg">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">化石林</h4>
+                        <p class="weui-media-box__desc">位于东区研究生院核心，它拥有50多棵化石树，是建华中地区第一个“化石林”，这50多棵化石树树种，分别从辽宁、新疆和内蒙古等地收购而来。这些化石树最粗的直径1．2米，高6米，其中最古老的“原始云杉木”化石，距今一亿六千二百万年至一亿七千二百万年之久。它们虽经岁月沧桑，从树木变成硬度达到6度至7度的石头，但其年轮、树皮、结疤等树木特征依然清晰可见，其中更有5棵稀世罕见的玛瑙树，不仅是化石中的珍品，而且对古生物学、古气候学、古地质学都极具研究价值。漫步在成片化石林，触摸着亿年古树木，顿时有一种沧海桑田的变迁感觉。它们穿越了生命的极限，傲然独立，正以另一种状态传递着信念，迎接新的挑战。</p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="http://img4.imgtn.bdimg.com/it/u=3350551289,1347237261&fm=26&gp=0.jpg">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">博物馆</h4>
+                        <p class="weui-media-box__desc">地大博物馆是国家4A级旅游景点，也是全国科普教育基地、全国青少年科技教育基地。地大逸夫博物馆造型别致，陈列展示面积五千余平方米。馆内开辟了五个地学展厅,分别是地球奥秘展厅、生命起源与进化展厅、珠宝玉石展厅、矿物岩石展厅和矿产资源展厅，大体代表了地学学科的基本框架。博物馆打开了地球46亿年沧桑巨变的宏伟画卷、地球生命38亿年进化的历史长廊，展现了精美绝伦的珠宝玉石世界、五光十色的矿物岩石天地以及与人类生存息息相关的地下宝藏。这里奇珍异宝会萃，来自各地的珍贵地质标本3万余件，其中自然界罕见的精品2千余件，如著名的黑龙江东北龙、和平永川龙、鹦鹉嘴龙等恐龙化石骨架，有堪称世界首位的鱼龙、海龙、海百合化石标本…。</p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="http://img4.imgtn.bdimg.com/it/u=3350551289,1347237261&fm=26&gp=0.jpg">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">地大隧道</h4>
+                        <p class="weui-media-box__desc">来到南望山脚下，一条隧道豁然出现在面前。这，就是“高校第一隧”——地大隧道。由于地大共分为东区、西区和北区，其中西区和北区的校园正好被一座山阻隔，为了方便两个校区的教职员工上学上班方便，学校因地制宜，打造了这个穿山隧道，该隧道全长近400米，呈圆拱形设计，可以并排让两辆汽车同行。按照自然山势，隧道稍稍向下倾斜，仿佛是个长坡，里面一年四季清爽宜人，有典型的穿堂风，是避暑的好地方。进入隧道，一眼就能望见400米外的阳光。在隧道中说话，声音被放大了；在里面散步，自然风吹过来，感觉相当的凉快</p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="http://img4.imgtn.bdimg.com/it/u=3350551289,1347237261&fm=26&gp=0.jpg">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">地大隧道</h4>
+                        <p class="weui-media-box__desc">这条长长的隧道横贯南望山，就像一位敞开胸怀的母亲，顶着幽幽南望山的沉重压力，将西区和北区这两个隔阂的校区紧紧地牵在手里。地大隧道是一条路，见证着地大人的足迹和汗水。地大人用“艰苦朴素，求真务实”的精神，不畏南望山的阻碍，硬是从山脚下走过去，为地大和地大人踩出一条光辉之路。地大隧道是一根线，将地大的科学知识与社会实践紧紧拴住。莘莘学子源源不断地从隧道的那一头走来，学习科学文化知识；又源源不断地走出隧道，将自己的光和热奉献给社会。</p>
+                    </div>
+                </a>
+            </div>
+            <div class="weui-panel__ft">
+                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                    <div class="weui-cell__bd">查看更多</div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
